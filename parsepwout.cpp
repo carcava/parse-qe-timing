@@ -118,7 +118,9 @@ const char mpitask_str[] = "Number of MPI processes:";
 const char ompthread_str[] = "Threads/MPI process:";
 const char npool_str[] = "K-points division:     npool     =";
 const char ntg_str[] = "wavefunctions fft division:  fft and procs/group =";
-const char northo_str[] = "ELPA distributed-memory algorithm (size of sub-group:";
+const char northo_CUSTOM_str[] = "custom distributed-memory algorithm (size of sub-group:";
+const char northo_SCALAPACK_str[] = "scalapack distributed-memory algorithm (size of sub-group:";
+const char northo_ELPA_str[] = "ELPA distributed-memory algorithm (size of sub-group:";
 const char nbgrp_str[] = "band groups division:  nbgrp     =";
 const char qever_str[] = "Program PWSCF v.6.0";
 
@@ -164,13 +166,28 @@ public:
 			while (*a == ' ') a++; // get rid of leading spaces
 			ntg = atoi(a);
 		}
-		if (!strncmp(a, northo_str, strlen(northo_str))) {
+    // The following three cases are mutually exclusive by design
+		if (!strncmp(a, northo_CUSTOM_str, strlen(northo_CUSTOM_str))) {
 			if (debug) printf("%s\n", a);
-			a = a + strlen(northo_str);
+			a = a + strlen(northo_CUSTOM_str);
 			while (*a == ' ') a++; // get rid of leading spaces
 			northo = atoi(a);
 			northo *= northo;
 		}
+    if (!strncmp(a, northo_SCALAPACK_str, strlen(northo_SCALAPACK_str))) {
+      if (debug) printf("%s\n", a);
+      a = a + strlen(northo_SCALAPACK_str);
+      while (*a == ' ') a++; // get rid of leading spaces
+      northo = atoi(a);
+      northo *= northo;
+    }
+    if (!strncmp(a, northo_ELPA_str, strlen(northo_ELPA_str))) {
+      if (debug) printf("%s\n", a);
+      a = a + strlen(northo_ELPA_str);
+      while (*a == ' ') a++; // get rid of leading spaces
+      northo = atoi(a);
+      northo *= northo;
+    }
 		if (!strncmp(a, nbgrp_str, strlen(nbgrp_str))) {
 			if (debug) printf("%s\n", a);
 			a = a + strlen(nbgrp_str);

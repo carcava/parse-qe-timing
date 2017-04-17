@@ -237,7 +237,7 @@ public:
 	}
 
 	void ParseRev( const char * a ) {
-		while( strncmp(a++,"svn rev. ",9) );
+		while( strncmp(a++,"svn rev. ",9) && *a && ( *a != '\n' ) && ( *a != '\r' ) );
 		a += 9;
 		while (*a == ' ') a++; 
 		rev[0] = *a; a++;

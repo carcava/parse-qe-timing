@@ -166,7 +166,7 @@ public:
 			while (*a == ' ') a++; // get rid of leading spaces
 			ntg = atoi(a);
 		}
-    // The following three cases are mutually exclusive by design
+		// The following three cases are mutually exclusive by design
 		if (!strncmp(a, northo_CUSTOM_str, strlen(northo_CUSTOM_str))) {
 			if (debug) printf("%s\n", a);
 			a = a + strlen(northo_CUSTOM_str);
@@ -174,20 +174,20 @@ public:
 			northo = atoi(a);
 			northo *= northo;
 		}
-    if (!strncmp(a, northo_SCALAPACK_str, strlen(northo_SCALAPACK_str))) {
-      if (debug) printf("%s\n", a);
-      a = a + strlen(northo_SCALAPACK_str);
-      while (*a == ' ') a++; // get rid of leading spaces
-      northo = atoi(a);
-      northo *= northo;
-    }
-    if (!strncmp(a, northo_ELPA_str, strlen(northo_ELPA_str))) {
-      if (debug) printf("%s\n", a);
-      a = a + strlen(northo_ELPA_str);
-      while (*a == ' ') a++; // get rid of leading spaces
-      northo = atoi(a);
-      northo *= northo;
-    }
+		if (!strncmp(a, northo_SCALAPACK_str, strlen(northo_SCALAPACK_str))) {
+			if (debug) printf("%s\n", a);
+			a = a + strlen(northo_SCALAPACK_str);
+			while (*a == ' ') a++; // get rid of leading spaces
+			northo = atoi(a);
+			northo *= northo;
+		}
+		if (!strncmp(a, northo_ELPA_str, strlen(northo_ELPA_str))) {
+			if (debug) printf("%s\n", a);
+			a = a + strlen(northo_ELPA_str);
+			while (*a == ' ') a++; // get rid of leading spaces
+			northo = atoi(a);
+			northo *= northo;
+		}
 		if (!strncmp(a, nbgrp_str, strlen(nbgrp_str))) {
 			if (debug) printf("%s\n", a);
 			a = a + strlen(nbgrp_str);
